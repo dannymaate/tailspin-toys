@@ -45,7 +45,7 @@ test.describe('Game Listing and Navigation', () => {
         await expect(card).toContainText('CodeForge Studios');
       }
 
-      await expect(page.getByTestId('filter-results')).toContainText(/Showing \d+ games/);
+      await expect(page.getByTestId('filter-results')).toContainText(/Showing \d+ games?/);
     });
   });
 

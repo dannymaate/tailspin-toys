@@ -32,6 +32,22 @@ const games = await getAllGames(getDatabase());
 </Layout>
 ```
 
+Document the contract for every reusable component:
+
+```astro
+---
+/** Props accepted by the reusable game card component. */
+interface Props {
+  /** Game data rendered by the card. */
+  game: Game;
+  /** Optional link destination for the card. */
+  href?: string;
+}
+---
+```
+
+The `Props` interface belongs in the component frontmatter. Document each prop when its purpose, accepted values, or constraints are not obvious from its type. Page-only props may use a brief interface comment when the contract needs clarification.
+
 ## Layouts
 
 - Create reusable layout components in `src/layouts/`
@@ -109,8 +125,10 @@ There is no Svelte/React layer. When a page genuinely needs client behaviour, ad
 ## TypeScript
 
 - Use TypeScript for type-safe props
-- Define `Props` interface in frontmatter
+- Define and document the `Props` interface in frontmatter for every reusable component
 - Type component imports and helper return values
+- Comment intent and non-obvious rendering decisions, not markup or expressions that are already self-explanatory
+- Keep component comments current when props or rendering behaviour change
 - Run `npx astro sync` to (re)generate route/content types before linting or type-checking
 - `.astro` files are type-checked by `npm run typecheck:astro` (which runs `astro sync` then `astro check`), on the classic `typescript` package. The pure TypeScript in `db/`, `src/lib/`, and `src/types/` is type-checked separately by `npm run typecheck` (the native TS 7 compiler, `tsgo`), which does **not** process `.astro` files.
 

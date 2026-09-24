@@ -14,6 +14,14 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 
 ## Code standards
 
+### Comments and Documentation
+
+- Comment intent, not mechanics. Explain why code exists, a non-obvious decision, or an important constraint; do not restate what the code already says.
+- Keep comments short, specific, and close to the code they explain. Delete or update comments in the same change when the related code changes; stale comments are bugs.
+- Every exported function in `db/` and `src/lib/` must have TSDoc/JSDoc describing its purpose, parameters, and return value. Document injectable `db` parameters so the testing pattern remains clear.
+- Every reusable `.astro` component must document its `Props` interface and describe each prop whose purpose or constraints are not obvious from its type.
+- Prefer documentation in the relevant instruction file or README for project-wide conventions. Do not add summary or planning markdown files to the repository.
+
 ### Required Before Each Commit
 
 #### Testing guidelines
@@ -34,8 +42,9 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 
 ### Code formatting requirements
 
-- Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`)
-- Frontend code (TypeScript, Astro) must pass ESLint checks (`npm run lint`)
+- Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`).
+- Use the existing ESLint formatting rules for semicolons, trailing commas, spacing, braces, and whitespace; do not introduce a competing formatter without updating the repository configuration.
+- Frontend code (TypeScript, Astro) must pass ESLint checks (`npm run lint`).
 
 ### Data Layer Patterns (Drizzle + Node SQLite)
 
@@ -63,7 +72,7 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 
 - Follow good security practices
 - Make sure to explicitly set the workflow permissions
-- Add comments to document what tasks are being performed
+- Add comments only when they explain a non-obvious workflow decision or security constraint, not to narrate every step.
 
 ## Scripts
 

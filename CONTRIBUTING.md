@@ -49,6 +49,13 @@ Before you can run and test the application locally, you'll need to install:
 
 ## Making Changes
 
+### Coding Standards
+
+- Explain intent and non-obvious decisions in comments; do not restate code, and update or remove stale comments in the same change.
+- Add TSDoc/JSDoc to every exported function in `db/` and `src/lib/`, including its purpose, parameters, and return value.
+- Document the `Props` interface and prop contract for every reusable `.astro` component.
+- Follow the repository’s ESLint-enforced TypeScript formatting rules. See the [coding standards](README.md#coding-standards) and focused [instruction files](.github/instructions/).
+
 ### Data Layer (Drizzle + Node SQLite)
 
 - Define tables in `db/schema.ts`; generate a migration with `npm run db:generate` after schema changes
